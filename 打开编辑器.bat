@@ -1,24 +1,22 @@
 @echo off
 setlocal
-set "DATA=D:\Tools\VSCode\data"
-set "CODE=D:\Tools\VSCode\Code.exe"
-if not exist "%CODE%" set "CODE=%LOCALAPPDATA%\Programs\Microsoft VS Code\Code.exe"
-if not exist "%CODE%" set "CODE=D:\DSAH\devkit\vscode\Code.exe"
+cd /d "D:\DSAH\ai-robot"
 
-if not exist "%CODE%" (
-    echo [ERROR] VS Code not found.
-    echo Run this installer first: D:\DSAH\devkit\VSCodeUserSetup-x64.exe
-    pause
-    exit /b 1
-)
+where code >nul 2>&1
+if errorlevel 1 goto nocode
 
-echo Starting VS Code ... first launch takes about 10-20 seconds.
-echo If no window appears, check the taskbar for a blue icon.
+echo Opening project in VS Code ...
+code "D:\DSAH\ai-robot"
+exit /b 0
+
+:nocode
+echo [INFO] The "code" command was not found.
 echo.
-
-start "" "%CODE%" --user-data-dir "%DATA%\user" --extensions-dir "%DATA%\extensions" "D:\DSAH\ai-robot"
-
-if errorlevel 1 (
-    echo [ERROR] Failed to start. Try running the installer instead.
-    pause
-)
+echo If you just installed VS Code from Microsoft Store:
+echo   1. Open VS Code once from the Start menu
+echo   2. Then run this file again
+echo.
+echo You can also just open the folder manually:
+echo   D:\DSAH\ai-robot
+pause
+exit /b 1
