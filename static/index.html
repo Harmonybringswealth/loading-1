@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>智能巡检机器人二维仿真系统</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="layout">
+    <section class="panel">
+      <h1>智能巡检机器人</h1>
+      <p class="hint">用 ↑ ↓ ← → 或 W A S D 控制机器人移动</p>
+
+      <canvas id="map" width="480" height="480"></canvas>
+
+      <div class="status">
+        <span>坐标：<b id="pos">-</b></span>
+        <span>朝向：<b id="facing">-</b></span>
+        <span>步数：<b id="steps">0</b></span>
+      </div>
+      <p id="message" class="message"></p>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
