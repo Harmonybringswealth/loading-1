@@ -1,22 +1,15 @@
 @echo off
 setlocal
-cd /d "D:\DSAH\ai-robot"
 
-where code >nul 2>&1
-if errorlevel 1 goto nocode
+echo Opening D:\DSAH\ai-robot in VS Code ...
 
-echo Opening project in VS Code ...
-code "D:\DSAH\ai-robot"
+start "" "vscode://file/D:/DSAH/ai-robot"
+
+if errorlevel 1 goto manual
 exit /b 0
 
-:nocode
-echo [INFO] The "code" command was not found.
-echo.
-echo If you just installed VS Code from Microsoft Store:
-echo   1. Open VS Code once from the Start menu
-echo   2. Then run this file again
-echo.
-echo You can also just open the folder manually:
-echo   D:\DSAH\ai-robot
+:manual
+echo [INFO] Could not open it automatically.
+echo Open VS Code from the Start menu, then: File - Open Folder - D:\DSAH\ai-robot
 pause
 exit /b 1
